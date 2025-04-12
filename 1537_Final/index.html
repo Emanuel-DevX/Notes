@@ -23,8 +23,13 @@
     </style>
   </head>
   <body class="flex h-screen font-sans pt-10">
+    <header class="fixed h-10 pr-5 py-1 top-0 left-0 flex justify-end  w-full">
+      
+      <a href="../index.html"><h2 class="text-2xl font-bold mb-6">📘 Kiya's Notes</h2></a>
+
+    </header>
     <!-- Mobile nav toggle -->
-    <div class="md:hidden fixed top-0 left-0 p-4 pt-1 z-50">
+    <div class="md:hidden fixed top-0 left-0 p-4 pt-1 z-50 flex">
       <button onclick="toggleSidebar()" class="text-yellow-500 text-2xl">☰</button>
     </div>
 
@@ -33,7 +38,7 @@
       id="sidebar"
       class="sidebar w-64 p-4 overflow-y-auto text-white fixed md:static h-screen z-40 hidden md:block"
     >
-      <h2 class="text-2xl font-bold mb-6">📘 Kiya's Notes</h2>
+      <h2 class="text-2xl font-bold mb-6">1537 Final Notes</h2>
       <nav id="nav" class="space-y-2 text-sm"></nav>
     </aside>
 

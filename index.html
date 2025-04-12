@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiya's Notes Collection</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #f8fafc;
+    }
+    .card {
+      background-color: #343434;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body class="min-h-screen px-6 py-10">
+  <header class="text-center mb-12">
+    <h1 class="text-4xl font-bold mb-2 text-yellow-400">📚 Kiya's Notes Collection</h1>
+    <p class="text-gray-400 text-sm">One place for all your coding wisdom. Click into any topic to dive deep!</p>
+  </header>
+
+  <div id="notesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+  <script>
+    const notesProjects = [
+      {
+        title: "💻 COMP 1537 Final Review",
+        description: "Web Dev, JS, Express, MongoDB, Projects + More.",
+        path: "1537_Final/index.html"
+      },
+      {
+        title: "🧠 Algorithms & Data Structures",
+        description: "Coming soon - Search, Sort, Recursion, Graphs, etc.",
+        path: "algos/index.html"
+      },
+      {
+        title: "☁️ Cloud Fundamentals",
+        description: "AWS, Azure, GCP Basics and Hands-On Notes (coming soon).",
+        path: "cloud/index.html"
+      }
+    ];
+
+    const container = document.getElementById("notesContainer");
+
+    notesProjects.forEach(note => {
+      const card = document.createElement("a");
+      card.href = note.path;
+      card.className = "card p-6 rounded shadow-lg block hover:bg-gray-700";
+      card.innerHTML = `
+        <h2 class="text-xl font-semibold mb-1 text-white">${note.title}</h2>
+        <p class="text-gray-300 text-sm">${note.description}</p>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
+
