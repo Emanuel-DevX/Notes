@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>📇 Flashcards - Kiya's Notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-color: #1e1e1e;
+        color: #f8fafc;
+      }
+      .card {
+        height: 500px;
+        width: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 1.125rem;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        transition: background-color 0.3s ease-in-out,
+          transform 0.3s ease-in-out;
+      }
+      .card-front {
+        background-color: #343434;
+      }
+      .card-back {
+        background-color: #898f2e;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col items-center justify-center h-screen px-4">
+    <div class="self-start pb-5">
+      <a
+        href="index.html"
+        class="back-btn my-20 px-4 py-2 bg-yellow-500 text-black rounded font-bold hover:bg-blue-500 text-md"
+        >🏠 Back to Home</a
+      >
+    </div>
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-bold">📇 Flashcards Review</h1>
+      <p class="text-sm text-gray-400">
+        Click the card to flip between question and answer
+      </p>
+    </div>
+
+    <div id="card" class="card cursor-pointer card-front">Loading...</div>
+
+    <div class="mt-6 flex gap-4">
+      <button
+        onclick="prevCard()"
+        class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500"
+      >
+        ⏮ Prev
+      </button>
+      <button
+        onclick="nextCard()"
+        class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-500"
+      >
+        Next ⏭
+      </button>
+    </div>
+
+    <script>
+      const flashcards = [
+        {
+          front: "What does document.getElementById() do?",
+          back: "Selects an HTML element by ID. Returns the element or null.",
+        },
+        {
+          front: "How do you send a JSON response in Express.js?",
+          back: "Use res.json(data) to send JSON with proper headers.",
+        },
+        {
+          front: "Difference between push() and unshift()?",
+          back: "push() adds to the end, unshift() adds to the beginning.",
+        },
+        {
+          front: "What is req.query used for?",
+          back: "To access query string parameters from the URL.",
+        },
+        {
+          front: "Find users with age > 18 in MongoDB.",
+          back: "User.find({ age: { $gt: 18 } })",
+        },
+        {
+          front: "What is async/await used for?",
+          back: "Handle asynchronous code like fetch with cleaner syntax.",
+        },
+        {
+          front: "What does addEventListener() do?",
+          back: "Attaches an event to a DOM element, e.g., click, mouseenter.",
+        },
+        {
+          front: "How do you define a schema in Mongoose?",
+          back: "const schema = new mongoose.Schema({ name: String })",
+        },
+        {
+          front: "How do you insert data using Mongoose?",
+          back: "Create a new model instance and call .save() method.",
+        },
+        {
+          front: "What is the purpose of app.use() in Express?",
+          back: "To register middleware for all routes.",
+        },
+        {
+          front: "What does filter() do in JS arrays?",
+          back: "Returns a new array with elements passing a test function.",
+        },
+        {
+          front: "How to delete a document by ID in Mongoose?",
+          back: "User.findByIdAndDelete(id)",
+        },
+        {
+          front: "What is res.sendFile() used for?",
+          back: "Send an HTML or static file from your server.",
+        },
+        {
+          front: "Use slice to get first 3 elements of an array.",
+          back: "array.slice(0, 3)",
+        },
+        {
+          front: "How to select multiple elements by class name?",
+          back: "document.getElementsByClassName('classname')",
+        },
+        {
+          front: "Set style on an element via JS.",
+          back: "element.style.color = 'red'",
+        },
+        {
+          front: "POST vs PUT in HTTP",
+          back: "POST = create new, PUT = update existing",
+        },
+        {
+          front: "Check if an array includes a value.",
+          back: "arr.includes(value)",
+        },
+        {
+          front: "Difference between innerText and innerHTML?",
+          back: "innerText = plain text, innerHTML = renders HTML tags",
+        },
+        {
+          front: "Purpose of express.urlencoded()",
+          back: "To parse URL-encoded form data in Express.",
+        },
+      ];
+
+      let current = 0;
+      let showingFront = true;
+
+      const card = document.getElementById("card");
+
+      function renderCard() {
+        card.innerText = showingFront
+          ? flashcards[current].front
+          : flashcards[current].back;
+        card.classList.toggle("card-front", showingFront);
+        card.classList.toggle("card-back", !showingFront);
+      }
+
+      card.addEventListener("click", () => {
+        showingFront = !showingFront;
+        renderCard();
+      });
+
+      function nextCard() {
+        current = (current + 1) % flashcards.length;
+        showingFront = true;
+        renderCard();
+      }
+
+      function prevCard() {
+        current = (current - 1 + flashcards.length) % flashcards.length;
+        showingFront = true;
+        renderCard();
+      }
+
+      renderCard();
+    </script>
+  </body>
+</html>

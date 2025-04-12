@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiya's Notes for 1537 Final</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #e2e8f0;
+    }
+    .sidebar {
+      background-color: #343434;
+    }
+    .active-link {
+      background-color: #4b5563;
+    }
+  </style>
+</head>
+<body class="flex h-screen">
+  <!-- Sidebar -->
+  <aside class="sidebar w-64 p-4 overflow-y-auto text-white">
+    <h2 class="text-2xl font-bold mb-6">📘 Kiya's Notes</h2>
+    <nav class="space-y-2 text-sm">
+      <a href="#arrays" class="block p-2 rounded hover:bg-gray-600">🔢 Arrays</a>
+      <a href="#vanilla-js" class="block p-2 rounded hover:bg-gray-600">⚙️ Vanilla JS</a>
+      <a href="#ajax" class="block p-2 rounded hover:bg-gray-600">🌐 AJAX (Fetch)</a>
+      <a href="#express" class="block p-2 rounded hover:bg-gray-600">🚀 Express</a>
+      <a href="#mongodb" class="block p-2 rounded hover:bg-gray-600">🗃️ MongoDB</a>
+      <a href="#mongoose" class="block p-2 rounded hover:bg-gray-600">🧬 Mongoose</a>
+    </nav>
+  </aside>
+
+  <!-- Content -->
+  <main class="flex-1 overflow-y-auto p-6 space-y-16">
+    <section id="arrays">
+      <h2 class="text-3xl font-semibold mb-4">🔢 JavaScript Arrays</h2>
+      <p>Arrays are ordered lists that can hold any data type. Useful methods include:</p>
+      <ul class="list-disc list-inside">
+        <li><code>push()</code>: Adds to end</li>
+        <li><code>pop()</code>: Removes from end</li>
+        <li><code>shift()</code>: Removes from start</li>
+        <li><code>unshift()</code>: Adds to start</li>
+        <li><code>map()</code>, <code>filter()</code>, <code>reduce()</code>: Functional tools</li>
+      </ul>
+      <pre class="bg-gray-800 p-4 rounded text-sm overflow-auto"><code>const numbers = [1, 2, 3];
+numbers.push(4);            // [1,2,3,4]
+const evens = numbers.filter(n => n % 2 === 0);</code></pre>
+    </section>
+
+    <section id="vanilla-js">
+      <h2 class="text-3xl font-semibold mb-4">⚙️ Vanilla JavaScript</h2>
+      <p>Pure JavaScript without frameworks. Key operations:</p>
+      <h3 class="text-xl mt-4 font-semibold">DOM Selection</h3>
+      <ul class="list-disc list-inside">
+        <li><code>document.getElementById()</code></li>
+        <li><code>document.querySelector()</code></li>
+        <li><code>document.querySelectorAll()</code></li>
+      </ul>
+      <pre class="bg-gray-800 p-4 rounded text-sm overflow-auto"><code>const btn = document.getElementById("submitBtn");
+btn.addEventListener("click", () => alert("Clicked!"));</code></pre>
+      <h3 class="text-xl mt-4 font-semibold">Manipulating DOM</h3>
+      <p>Changing elements dynamically with <code>innerText</code>, <code>innerHTML</code>, and class manipulation.</p>
+      <h3 class="text-xl mt-4 font-semibold">Events</h3>
+      <p>Attach listeners with <code>addEventListener</code> using event types like <code>click</code>, <code>mouseenter</code>.</p>
+    </section>
+
+    <section id="ajax">
+      <h2 class="text-3xl font-semibold mb-4">🌐 AJAX with Async/Await</h2>
+      <p>AJAX allows async data fetching from APIs using JavaScript:</p>
+      <pre class="bg-gray-800 p-4 rounded text-sm overflow-auto"><code>async function getData() {
+  const res = await fetch('/api/users');
+  const data = await res.json();
+  console.log(data);
+}</code></pre>
+    </section>
+
+    <section id="express">
+      <h2 class="text-3xl font-semibold mb-4">🚀 Express.js</h2>
+      <p>Minimal and flexible Node.js framework.</p>
+      <ul class="list-disc list-inside">
+        <li><code>app.get()</code>, <code>app.post()</code>, <code>app.put()</code>, <code>app.delete()</code></li>
+        <li><code>req.params</code>, <code>req.query</code>, <code>req.body</code></li>
+        <li><code>res.send()</code>, <code>res.status()</code>, <code>res.json()</code></li>
+      </ul>
+      <pre class="bg-gray-800 p-4 rounded text-sm overflow-auto"><code>app.get('/user/:id', (req, res) => {
+  res.send(`User ID: ${req.params.id}`);
+});</code></pre>
+    </section>
+
+    <section id="mongodb">
+      <h2 class="text-3xl font-semibold mb-4">🗃️ MongoDB</h2>
+      <p>Document-oriented NoSQL database. CRUD operations:</p>
+      <ul class="list-disc list-inside">
+        <li>Insert: <code>db.collection.insertOne()</code></li>
+        <li>Find: <code>db.collection.find()</code></li>
+        <li>Update: <code>db.collection.updateOne()</code></li>
+        <li>Delete: <code>db.collection.deleteOne()</code></li>
+      </ul>
+    </section>
+
+    <section id="mongoose">
+      <h2 class="text-3xl font-semibold mb-4">🧬 Mongoose</h2>
+      <p>Mongoose simplifies MongoDB usage with schemas and models.</p>
+      <pre class="bg-gray-800 p-4 rounded text-sm overflow-auto"><code>const userSchema = new mongoose.Schema({ name: String });
+const User = mongoose.model("User", userSchema);
+
+// Async Create
+async function createUser() {
+  const user = new User({ name: "Kiya" });
+  await user.save();
+}</code></pre>
+    </section>
+  </main>
+</body>
+</html>

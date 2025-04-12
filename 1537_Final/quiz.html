@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Kiya's 1537 Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-color: #1e1e1e;
+        color: #f8fafc;
+      }
+      .question-box {
+        background-color: #343434;
+      }
+      .selected {
+        background-color: #4b5563;
+      }
+    </style>
+  </head>
+  <body class="p-6">
+    <div class="pb-5">
+      <a
+        href="index.html"
+        class="back-btn my-20 px-4 py-2 bg-yellow-500 text-black rounded font-bold hover:bg-blue-500 text-md"
+        >🏠 Back to Home</a
+      >
+    </div>
+    <h1 class="text-3xl font-bold mb-4">📝 COMP 1537 Review Quiz</h1>
+    <div id="quiz" class="space-y-8"></div>
+    <div class="mt-10">
+      <button
+        onclick="checkAnswers()"
+        class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      >
+        Check Answers
+      </button>
+      <p id="score" class="mt-4 text-lg font-semibold"></p>
+    </div>
+
+    <script>
+      const questions = [
+        {
+          q: "Which method adds a new element to the end of an array?",
+          options: ["push()", "pop()", "shift()", "unshift()"],
+          answer: 0,
+        },
+        {
+          q: "What does document.getElementById() return if no element is found?",
+          options: ["[]", "null", "undefined", "false"],
+          answer: 1,
+        },
+        {
+          q: "Which method sends a JSON response in Express?",
+          options: [
+            "res.sendFile()",
+            "res.write()",
+            "res.json()",
+            "res.sendJson()",
+          ],
+          answer: 2,
+        },
+        {
+          q: "Which HTTP method is used to modify existing data?",
+          options: ["GET", "POST", "PUT", "DELETE"],
+          answer: 2,
+        },
+        {
+          q: "How do you access URL query parameters in Express?",
+          options: ["req.query", "req.body", "req.params", "req.url"],
+          answer: 0,
+        },
+        {
+          q: "In Mongoose, what is required to define a collection model?",
+          options: ["A Schema", "A View", "A Table", "A Path"],
+          answer: 0,
+        },
+        {
+          q: "What JavaScript method creates a new array with elements that pass a test?",
+          options: ["map()", "filter()", "reduce()", "slice()"],
+          answer: 1,
+        },
+        {
+          q: "Which operator is used to find values greater than a number in MongoDB?",
+          options: ["$gt", "$lt", "$gte", "$lte"],
+          answer: 0,
+        },
+        {
+          q: "Which Express method is used to define middleware?",
+          options: ["app.route()", "app.listen()", "app.use()", "app.stack()"],
+          answer: 2,
+        },
+        {
+          q: "How do you select all elements with the class 'btn' in vanilla JS?",
+          options: [
+            "getElementsByClassName('btn')",
+            "querySelector('btn')",
+            "querySelectorAll('.btn')",
+            "getElementById('btn')",
+          ],
+          answer: 2,
+        },
+        {
+          q: "Which fetch method option is required for sending JSON data?",
+          options: ["body", "headers", "method", "All of the above"],
+          answer: 3,
+        },
+        {
+          q: "Which array method transforms each element and returns a new array?",
+          options: ["forEach()", "map()", "filter()", "reduce()"],
+          answer: 1,
+        },
+        {
+          q: "What does res.status(404).send('Not Found') do?",
+          options: [
+            "Logs 404",
+            "Returns 404 status with message",
+            "Deletes route",
+            "None",
+          ],
+          answer: 1,
+        },
+        {
+          q: "How do you submit a form without reloading the page?",
+          options: ["AJAX", "PHP", "Express", "sessionStorage"],
+          answer: 0,
+        },
+        {
+          q: "Which schema option ensures a value is unique?",
+          options: ["required", "unique", "index", "sparse"],
+          answer: 1,
+        },
+        {
+          q: "What does innerHTML allow that innerText doesn’t?",
+          options: ["Style", "Nested tags", "Plain text", "None"],
+          answer: 1,
+        },
+        {
+          q: "What method removes the last element from an array?",
+          options: ["pop()", "shift()", "splice()", "slice()"],
+          answer: 0,
+        },
+        {
+          q: "Which method parses URL-encoded data in Express?",
+          options: [
+            "express.urlencoded()",
+            "express.static()",
+            "express.json()",
+            "express.get()",
+          ],
+          answer: 0,
+        },
+        {
+          q: "Which MongoDB function returns all documents?",
+          options: ["findAll()", "getAll()", "find()", "select()"],
+          answer: 2,
+        },
+        {
+          q: "How to serve static files in Express?",
+          options: [
+            "express.static()",
+            "res.static()",
+            "req.file()",
+            "app.html()",
+          ],
+          answer: 0,
+        },
+        // You can add more up to 50 in same format
+
+        {
+          q: "Which method adds a new element to the end of an array?",
+          options: ["push()", "pop()", "shift()", "unshift()"],
+          answer: 0,
+        },
+        {
+          q: "What does document.getElementById() return if no element is found?",
+          options: ["[]", "null", "undefined", "false"],
+          answer: 1,
+        },
+        {
+          q: "Which method sends a JSON response in Express?",
+          options: [
+            "res.sendFile()",
+            "res.write()",
+            "res.json()",
+            "res.sendJson()",
+          ],
+          answer: 2,
+        },
+        {
+          q: "Which HTTP method is used to modify existing data?",
+          options: ["GET", "POST", "PUT", "DELETE"],
+          answer: 2,
+        },
+        {
+          q: "How do you access URL query parameters in Express?",
+          options: ["req.query", "req.body", "req.params", "req.url"],
+          answer: 0,
+        },
+        {
+          q: "In Mongoose, what is required to define a collection model?",
+          options: ["A Schema", "A View", "A Table", "A Path"],
+          answer: 0,
+        },
+        {
+          q: "What JavaScript method creates a new array with elements that pass a test?",
+          options: ["map()", "filter()", "reduce()", "slice()"],
+          answer: 1,
+        },
+        {
+          q: "Which operator is used to find values greater than a number in MongoDB?",
+          options: ["$gt", "$lt", "$gte", "$lte"],
+          answer: 0,
+        },
+        {
+          q: "Which Express method is used to define middleware?",
+          options: ["app.route()", "app.listen()", "app.use()", "app.stack()"],
+          answer: 2,
+        },
+        {
+          q: "How do you select all elements with the class 'btn' in vanilla JS?",
+          options: [
+            "getElementsByClassName('btn')",
+            "querySelector('btn')",
+            "querySelectorAll('.btn')",
+            "getElementById('btn')",
+          ],
+          answer: 2,
+        },
+        {
+          q: "Which fetch method option is required for sending JSON data?",
+          options: ["body", "headers", "method", "All of the above"],
+          answer: 3,
+        },
+        {
+          q: "Which array method transforms each element and returns a new array?",
+          options: ["forEach()", "map()", "filter()", "reduce()"],
+          answer: 1,
+        },
+        {
+          q: "What does res.status(404).send('Not Found') do?",
+          options: [
+            "Logs 404",
+            "Returns 404 status with message",
+            "Deletes route",
+            "None",
+          ],
+          answer: 1,
+        },
+        {
+          q: "How do you submit a form without reloading the page?",
+          options: ["AJAX", "PHP", "Express", "sessionStorage"],
+          answer: 0,
+        },
+        {
+          q: "Which schema option ensures a value is unique?",
+          options: ["required", "unique", "index", "sparse"],
+          answer: 1,
+        },
+        {
+          q: "What does innerHTML allow that innerText doesn’t?",
+          options: ["Style", "Nested tags", "Plain text", "None"],
+          answer: 1,
+        },
+        {
+          q: "What method removes the last element from an array?",
+          options: ["pop()", "shift()", "splice()", "slice()"],
+          answer: 0,
+        },
+        {
+          q: "Which method parses URL-encoded data in Express?",
+          options: [
+            "express.urlencoded()",
+            "express.static()",
+            "express.json()",
+            "express.get()",
+          ],
+          answer: 0,
+        },
+        {
+          q: "Which MongoDB function returns all documents?",
+          options: ["findAll()", "getAll()", "find()", "select()"],
+          answer: 2,
+        },
+        {
+          q: "How to serve static files in Express?",
+          options: [
+            "express.static()",
+            "res.static()",
+            "req.file()",
+            "app.html()",
+          ],
+          answer: 0,
+        },
+        {
+          q: "Which method removes the first element from an array?",
+          options: ["pop()", "shift()", "splice()", "slice()"],
+          answer: 1,
+        },
+        {
+          q: "What does the 'map()' method return?",
+          options: [
+            "A filtered array",
+            "A new transformed array",
+            "A single value",
+            "undefined",
+          ],
+          answer: 1,
+        },
+        {
+          q: "Which method combines two or more arrays?",
+          options: ["concat()", "join()", "merge()", "push()"],
+          answer: 0,
+        },
+        {
+          q: "What does document.querySelector() return if no match is found?",
+          options: ["null", "undefined", "[]", "false"],
+          answer: 0,
+        },
+        {
+          q: "Which method creates a new HTML element?",
+          options: [
+            "document.write()",
+            "document.createElement()",
+            "document.cloneNode()",
+            "document.newElement()",
+          ],
+          answer: 1,
+        },
+        {
+          q: "How do you add a class to an element?",
+          options: [
+            "element.addClass()",
+            "element.className =",
+            "element.classList.add()",
+            "element.setClass()",
+          ],
+          answer: 2,
+        },
+        {
+          q: "Which Express method is used to handle GET requests?",
+          options: ["app.post()", "app.get()", "app.use()", "app.route()"],
+          answer: 1,
+        },
+        {
+          q: "What does next() do in Express middleware?",
+          options: [
+            "Ends the request",
+            "Moves to the next middleware",
+            "Sends a response",
+            "Throws an error",
+          ],
+          answer: 1,
+        },
+        {
+          q: "How do you set a status code in Express?",
+          options: [
+            "res.code(200)",
+            "res.status(200)",
+            "res.sendStatus(200)",
+            "res.setStatus(200)",
+          ],
+          answer: 1,
+        },
+        {
+          q: "Which operator checks if a field exists in MongoDB?",
+          options: ["$exists", "$has", "$in", "$contains"],
+          answer: 0,
+        },
+        {
+          q: "What does the $inc operator do?",
+          options: [
+            "Deletes a field",
+            "Increments a value",
+            "Checks inclusion",
+            "Creates an index",
+          ],
+          answer: 1,
+        },
+        {
+          q: "Which method updates a document if found, otherwise inserts it?",
+          options: [
+            "update()",
+            "findAndModify()",
+            "upsert()",
+            "findOneAndUpdate()",
+          ],
+          answer: 2,
+        },
+        {
+          q: "What is a Mongoose virtual?",
+          options: [
+            "A computed property",
+            "A database index",
+            "A middleware function",
+            "A query helper",
+          ],
+          answer: 0,
+        },
+        {
+          q: "Which method saves a document to the database?",
+          options: [
+            "document.save()",
+            "model.create()",
+            "model.save()",
+            "document.update()",
+          ],
+          answer: 0,
+        },
+        {
+          q: "How do you define an instance method in Mongoose?",
+          options: [
+            "schema.methods",
+            "schema.statics",
+            "schema.virtuals",
+            "schema.queries",
+          ],
+          answer: 0,
+        },
+        {
+          q: "Which HTTP method is used to retrieve data?",
+          options: ["POST", "GET", "PUT", "DELETE"],
+          answer: 1,
+        },
+        {
+          q: "What is the purpose of the OPTIONS method?",
+          options: [
+            "Delete a resource",
+            "Fetch metadata",
+            "Update a resource",
+            "Check allowed methods",
+          ],
+          answer: 3,
+        },
+        {
+          q: "Which method is idempotent but not safe?",
+          options: ["GET", "POST", "PUT", "DELETE"],
+          answer: 2,
+        },
+        {
+          q: "What is the correct order of middleware execution in Express?",
+          options: ["Top to bottom", "Bottom to top", "Random", "Parallel"],
+          answer: 0,
+        },
+        {
+          q: "Which middleware parses JSON requests?",
+          options: [
+            "express.text()",
+            "express.json()",
+            "express.raw()",
+            "express.urlencoded()",
+          ],
+          answer: 1,
+        },
+      ];
+
+      const quizContainer = document.getElementById("quiz");
+
+      questions.forEach((q, i) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "question-box p-4 rounded shadow";
+        wrapper.id = `box-${i}`;
+
+        const question = document.createElement("p");
+        question.innerHTML = `<strong>Q${i + 1}:</strong> ${q.q}`;
+        wrapper.appendChild(question);
+
+        q.options.forEach((option, j) => {
+          const label = document.createElement("label");
+          label.className = "block mt-2 cursor-pointer";
+          label.innerHTML = `
+          <input type="radio" name="q${i}" value="${j}" class="mr-2">
+          ${option}
+        `;
+          wrapper.appendChild(label);
+        });
+
+        const resultBox = document.createElement("div");
+        resultBox.id = `result-${i}`;
+        resultBox.className = "mt-2 font-semibold text-sm";
+        wrapper.appendChild(resultBox);
+
+        quizContainer.appendChild(wrapper);
+
+        // Add a check button for every 10 questions
+        if ((i + 1) % 10 === 0 || i === questions.length - 1) {
+          const section = document.createElement("div");
+          section.className = "my-4";
+          const btn = document.createElement("button");
+          btn.innerText = `Check Answers Q${i - 8}-${i + 1}`;
+          btn.className =
+            "px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700";
+          btn.onclick = () => checkGroup(i - 9, i);
+          section.appendChild(btn);
+          quizContainer.appendChild(section);
+        }
+      });
+
+      function checkGroup(start, end) {
+        let score = 0;
+        let attempted = 0;
+        for (let i = start; i <= end; i++) {
+          const radios = document.getElementsByName("q" + i);
+          let selected = -1;
+          for (const r of radios) {
+            if (r.checked) {
+              selected = parseInt(r.value);
+              break;
+            }
+          }
+
+          const box = document.getElementById(`box-${i}`);
+          const resultBox = document.getElementById(`result-${i}`);
+          box.classList.remove("wrong-answer", "correct-answer");
+
+          if (selected !== -1) {
+            attempted++;
+            if (selected === questions[i].answer) {
+              box.classList.add("correct-answer");
+              resultBox.innerText = "✅ Correct";
+              resultBox.style.color = "#34d399"; // green
+              score++;
+            } else {
+              box.classList.add("wrong-answer");
+              resultBox.innerText = `❌ Incorrect. Correct answer: ${
+                questions[i].options[questions[i].answer]
+              }`;
+              resultBox.style.color = "#f87171"; // red
+            }
+          } else {
+            resultBox.innerText = "⚠️ Not attempted";
+            resultBox.style.color = "#facc15"; // yellow
+          }
+        }
+
+        const summary = document.createElement("p");
+        summary.className = "mt-2 text-lg font-bold text-blue-300";
+        summary.innerText = `📊 You got ${score} out of ${attempted} questions correct in this batch.`;
+        quizContainer.insertBefore(summary, quizContainer.children[end + 2]);
+      }
+    </script>
+  </body>
+</html>

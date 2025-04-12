@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>📋 Summary Sheets – Kiya's Notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-color: #1e1e1e;
+        color: #f8fafc;
+      }
+      .card {
+        background-color: #343434;
+      }
+    </style>
+  </head>
+  <body class="p-6">
+    <div class="pb-5">
+      <a
+        href="index.html"
+        class="back-btn my-20 px-4 py-2 bg-yellow-500 text-black rounded font-bold hover:bg-blue-500 text-md"
+        >🏠 Back to Home</a
+      >
+    </div>
+    <h1 class="text-3xl font-bold mb-6">📋 Quick Reference Summary</h1>
+    <p class="text-gray-400 mb-10">
+      Use these sheets as a quick lookup for major concepts covered in COMP
+      1537. Focus on understanding, not memorizing!
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Arrays -->
+      <div class="card p-4 rounded shadow">
+        <h2 class="text-xl font-semibold mb-2">🔢 JavaScript Arrays</h2>
+        <ul class="list-disc ml-4 text-sm">
+          <li><code>push()</code>: Add to end</li>
+          <li><code>pop()</code>: Remove from end</li>
+          <li><code>shift()</code>: Remove from start</li>
+          <li><code>unshift()</code>: Add to start</li>
+          <li><code>map()</code>: Transform each element</li>
+          <li><code>filter()</code>: Keep matching values</li>
+          <li><code>reduce()</code>: Combine to single value</li>
+          <li><code>slice()</code>: Copy part of array</li>
+          <li><code>splice()</code>: Insert/remove at index</li>
+        </ul>
+      </div>
+
+      <!-- DOM -->
+      <div class="card p-4 rounded shadow">
+        <h2 class="text-xl font-semibold mb-2">⚙️ DOM & Vanilla JS</h2>
+        <ul class="list-disc ml-4 text-sm">
+          <li><code>getElementById()</code>, <code>querySelector()</code></li>
+          <li><code>addEventListener()</code> for interaction</li>
+          <li><code>innerText</code> vs <code>innerHTML</code></li>
+          <li><code>classList.add/remove/toggle()</code></li>
+          <li><code>appendChild()</code>, <code>createElement()</code></li>
+          <li><code>style.property</code> to style directly</li>
+        </ul>
+      </div>
+
+      <!-- AJAX -->
+      <div class="card p-4 rounded shadow">
+        <h2 class="text-xl font-semibold mb-2">🌐 AJAX & Fetch</h2>
+        <ul class="list-disc ml-4 text-sm">
+          <li><code>fetch()</code> for API requests</li>
+          <li><code>async/await</code> for clean syntax</li>
+          <li><code>headers</code>: set content-type</li>
+          <li><code>JSON.stringify()</code> body for POST</li>
+          <li><code>try/catch</code> for error handling</li>
+        </ul>
+      </div>
+
+      <!-- Express -->
+      <div class="card p-4 rounded shadow">
+        <h2 class="text-xl font-semibold mb-2">🚀 Express.js</h2>
+        <ul class="list-disc ml-4 text-sm">
+          <li><code>app.get/post/put/delete()</code></li>
+          <li>
+            <code>req.params</code>, <code>req.body</code>,
+            <code>req.query</code>
+          </li>
+          <li><code>res.send()</code>, <code>res.json()</code></li>
+          <li><code>app.use()</code> for middleware</li>
+          <li>
+            <code>express.json()</code>, <code>express.urlencoded()</code>
+          </li>
+        </ul>
+      </div>
+
+      <!-- MongoDB -->
+      <div class="card p-4 rounded shadow">
+        <h2 class="text-xl font-semibold mb-2">🗃️ MongoDB</h2>
+        <ul class="list-disc ml-4 text-sm">
+          <li>
+            Use <code>find()</code>, <code>insertOne()</code>,
+            <code>updateOne()</code>, <code>deleteOne()</code>
+          </li>
+          <li>
+            Supports operators like <code>$gt</code>, <code>$lt</code>,
+            <code>$or</code>
+          </li>
+          <li>Data is stored as BSON (JSON-like)</li>
+          <li>No strict schema</li>
+        </ul>
+      </div>
+
+      <!-- Mongoose -->
+      <div class="card p-4 rounded shadow">
+        <h2 class="text-xl font-semibold mb-2">🧬 Mongoose</h2>
+        <ul class="list-disc ml-4 text-sm">
+          <li>Define schema: <code>new Schema({})</code></li>
+          <li>Create model: <code>mongoose.model()</code></li>
+          <li>
+            <code>Model.find()</code>, <code>Model.create()</code>,
+            <code>Model.findById()</code>
+          </li>
+          <li>
+            Use <code>required</code>, <code>default</code>,
+            <code>unique</code> in schema
+          </li>
+          <li><code>populate()</code> for relationships</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
