@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>1712 Final Prep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-color: #1e1e1e;
+        color: #ffffff;
+      }
+      .sidebar {
+        background-color: #343434;
+      }
+      .active-link {
+        background-color: #4b5563;
+      }
+    </style>
+  </head>
+  <body class="flex h-screen font-sans">
+    <!-- Fixed header with hamburger menu -->
+    <header class="fixed flex items-center justify-between w-full p-2  bg-gray-800 z-50">
+              <!-- Mobile Hamburger Toggle -->
+      <button id="hamburger" class="text-2xl text-yellow-400 md:hidden">
+        &#9776;
+      </button>
+      <div></div>
+ <a href="../index.html" class=""
+        ><h2 class="text-yellow-400 text-2xl font-bold ">
+          📘 Kiya's Notes
+        </h2></a>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside
+      id="sidebar"
+      class="sidebar w-64 p-4 space-y-4 fixed inset-y-0 left-0 transform -translate-x-full transition duration-300 ease-in-out md:translate-x-0 md:static z-40"
+    >
+      <h2 class="text-2xl font-bold mb-4">Menu</h2>
+      <nav class="space-y-2">
+        <a href="quiz.html" class="block px-4 py-2 rounded hover:bg-gray-600">Quizzes</a>
+        <a href="flashcards.html" class="block px-4 py-2 rounded hover:bg-gray-600">Flashcards</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 pt-20 overflow-y-auto">
+      <div class="max-w-4xl mx-auto bg-gray-900 p-6 rounded-lg shadow-lg">
+        <!-- 1. Database Normalization and Data Modeling -->
+        <h3 class="text-xl font-semibold mb-2">1. Database Normalization and Data Modeling</h3>
+        <p class="mb-2 font-medium">Normalization Concepts:</p>
+        <ul class="list-disc ml-6 mb-4">
+          <li>
+            <strong>1NF (First Normal Form):</strong>
+            <ul class="list-disc ml-6">
+              <li>Ensure every cell in a table contains only a single, indivisible value. <span class="italic text-gray-400">(e.g., split full name into first and last name)</span></li>
+              <li>Identify and remove repeating groups (e.g., lists of phone numbers in one field).</li>
+            </ul>
+          </li>
+          <li>
+            <strong>2NF (Second Normal Form):</strong>
+            <ul class="list-disc ml-6">
+              <li>Make sure the table is already in 1NF.</li>
+              <li>Remove partial dependencies where non-key attributes depend on only a part of a composite primary key.</li>
+              <li>Practice breaking down tables by isolating groups of attributes that belong with the key’s individual parts. <span class="italic text-gray-400">(e.g., separate order details from order items)</span></li>
+            </ul>
+          </li>
+          <li>
+            <strong>3NF (Third Normal Form):</strong>
+            <ul class="list-disc ml-6">
+              <li>Once in 2NF, eliminate transitive dependencies, meaning no non-key attribute should depend on another non-key attribute.</li>
+              <li>Exercise: Given a sample table, identify determinants (e.g., PROJ_NUM → PROJ_NAME) and split tables to remove these indirect dependencies.</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="mb-2 font-medium">Data Modeling Practice:</p>
+        <ul class="list-disc ml-6 mb-6">
+          <li>Create Entity-Relationship Diagrams (ERDs) to visualize entities and relationships.</li>
+          <li>Define primary keys, candidate keys, and foreign keys.</li>
+          <li>Work on problems that require you to transform a logical data model into a physical one.</li>
+        </ul>
+
+        <!-- 2. System Acquisition Strategies -->
+        <hr class="border-gray-700 my-4">
+        <h3 class="text-xl font-semibold mb-2">2. System Acquisition Strategies</h3>
+        <p class="mb-2 font-medium">Options Overview:</p>
+        <ul class="list-disc ml-6 mb-4">
+          <li>
+            <strong>Custom In-House Development:</strong>
+            <ul class="list-disc ml-6">
+              <li>Benefits include complete alignment with business needs and retaining technical skills.</li>
+              <li>Risks include higher upfront cost, longer development time, and ongoing maintenance challenges.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Packaged Software:</strong>
+            <ul class="list-disc ml-6">
+              <li>Often used for common functions like payroll or accounting.</li>
+              <li>Customization is possible but may introduce limitations or require workarounds.</li>
+              <li>Consider compatibility with your current systems and whether the vendor’s solution forces you to change business processes.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Outsourcing:</strong>
+            <ul class="list-disc ml-6">
+              <li>Involves hiring external vendors or service providers (including ASP and SaaS models).</li>
+              <li>Weigh benefits like lower initial development investment against risks such as loss of control and dependency on external expertise.</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="mb-2 font-medium">Gathering Information:</p>
+        <ul class="list-disc ml-6 mb-6">
+          <li>Understand formal tools like RFP (Request for Proposal), RFI (Request for Information), and RFQ (Request for Quote).</li>
+          <li>Practice outlining requirements, evaluation criteria, and timelines, and then comparing pros and cons based on vendor responses.</li>
+        </ul>
+
+        <!-- 3. Architecture Design -->
+        <hr class="border-gray-700 my-4">
+        <h3 class="text-xl font-semibold mb-2">3. Architecture Design</h3>
+        <p class="mb-2 font-medium">Core Components and Models:</p>
+        <ul class="list-disc ml-6 mb-4">
+          <li>
+            <strong>Components:</strong>
+            <ul class="list-disc ml-6">
+              <li>Software (data storage, application logic, presentation logic)</li>
+              <li>Hardware (servers, client machines, networking devices)</li>
+              <li>Networks (LAN, WAN, internet connections)</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Architectural Models:</strong>
+            <ul class="list-disc ml-6">
+              <li>
+                <strong>Client-Server Architecture:</strong>
+                <ul class="list-disc ml-6">
+                  <li>Understand the distinction between thick clients (rich application logic on the client) and thin clients (minimal logic, mainly presentation).</li>
+                  <li>Identify how tasks and responsibilities are divided between client and server.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Multi-Tier Architectures:</strong>
+                <ul class="list-disc ml-6">
+                  <li>Two-Tier: Usually one tier for the client and one for the server (data storage and business logic).</li>
+                  <li>Three-Tier: Adds an application server tier to handle business logic separately.</li>
+                  <li>N-Tier: Further separation of concerns with more layers, increasing scalability and maintainability.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Other Approaches:</strong>
+                <ul class="list-disc ml-6">
+                  <li>Server-based architectures (centralized processing vs. client-side processing) and zero/ultrathin clients.</li>
+                  <li>Explore the benefits of virtualization and how cloud computing (public, private, hybrid) supports modern architecture with elastic scalability.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p class="mb-2 font-medium">Practice Tips:</p>
+        <ul class="list-disc ml-6 mb-6">
+          <li>Draw diagrams showing the flow of data between tiers and map out where application logic, data access, and presentation layers are implemented.</li>
+          <li>Consider design trade-offs: network speed, load balancing, fault tolerance, and integration challenges.</li>
+        </ul>
+
+        <!-- 4. Interface Design and Usability -->
+        <hr class="border-gray-700 my-4">
+        <h3 class="text-xl font-semibold mb-2">4. Interface Design and Usability</h3>
+        <p class="mb-2 font-medium">Usability Fundamentals:</p>
+        <ul class="list-disc ml-6 mb-4">
+          <li>
+            <strong>Key Metrics:</strong>
+            <ul class="list-disc ml-6">
+              <li>Effectiveness: Does the interface allow users to accomplish their tasks?</li>
+              <li>Efficiency: Are tasks completed with minimal effort?</li>
+              <li>Satisfaction: Do users enjoy interacting with the system?</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="mb-2 font-medium">The Design Process:</p>
+        <ul class="list-disc ml-6 mb-4">
+          <li>Conduct user research by developing personas and analyzing use scenarios.</li>
+          <li>Create low-fidelity prototypes such as sketches or wireframes, and evolve these into high-fidelity interactive prototypes.</li>
+          <li>Practice heuristic evaluations using established guidelines.</li>
+        </ul>
+        <p class="mb-2 font-medium">Golden Rules of Interface Design:</p>
+        <ul class="list-disc ml-6 mb-4">
+          <li>Focus on consistency (visual and functional), provide clear and immediate feedback, design for error prevention and easy error recovery, support reversible actions, and reduce cognitive load.</li>
+        </ul>
+        <p class="mb-2 font-medium">Practical Exercises:</p>
+        <ul class="list-disc ml-6 mb-6">
+          <li>Sketch different UI layouts and simulate user interactions.</li>
+          <li>Review case studies or examples (like booking a ticket online) to identify usability strengths and areas for improvement.</li>
+        </ul>
+
+        <!-- 5. Program Design and Modularization -->
+        <hr class="border-gray-700 my-4">
+        <h3 class="text-xl font-semibold mb-2">5. Program Design and Modularization</h3>
+        <p class="mb-2 font-medium">Modular Design Concepts:</p>
+        <ul class="list-disc ml-6 mb-4">
+          <li>
+            <strong>Top-Down Approach:</strong>
+            <ul class="list-disc ml-6">
+              <li>Start by outlining a high-level diagram showing the main system components.</li>
+              <li>Break the system into smaller modules, identifying control modules (or drivers) and subordinate modules.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Cohesion and Coupling:</strong>
+            <ul class="list-disc ml-6">
+              <li>Cohesion: Ensure each module performs a single, well-defined task.</li>
+              <li>Coupling: Modules should interact as little as possible with each other to minimize dependencies.</li>
+              <li>Practice identifying and refactoring code examples that demonstrate high coupling or low cohesion.</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="mb-2 font-medium">Translating DFDs to Structure Charts:</p>
+        <ul class="list-disc ml-6 mb-6">
+          <li>Begin with Data Flow Diagrams (DFDs) to capture the business processes and then map these to a hierarchy of modules in a structure chart.</li>
+          <li>Learn to represent control flow, iterations (loops), and conditional processing in your charts.</li>
+        </ul>
+
+        <!-- 6. Data Storage Design and Performance Optimization -->
+        <hr class="border-gray-700 my-4">
+        <h3 class="text-xl font-semibold mb-2">6. Data Storage Design and Performance Optimization</h3>
+        <p class="mb-2 font-medium">Storage Formats and Models:</p>
+        <ul class="list-disc ml-6 mb-4">
+          <li>
+            <strong>Files:</strong>
+            <ul class="list-disc ml-6">
+              <li>Understand when a flat file (like CSV) is sufficient vs. when a more robust database is needed.</li>
+              <li>Know the differences between types of files such as master, transaction, audit, and history files.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Databases:</strong>
+            <ul class="list-disc ml-6">
+              <li>Relational Databases: Focus on tables, primary/foreign keys, normalization, and SQL operations (CRUD).</li>
+              <li>NoSQL Databases: Get familiar with scenarios where document-oriented, wide-column, or graph databases are advantageous.</li>
+              <li>Multidimensional Databases: Often used in data warehousing and business intelligence with star schemas.</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="mb-2 font-medium">Logical to Physical Model Transition:</p>
+        <ul class="list-disc ml-6 mb-4">
+          <li>Identify how entities become tables.</li>
+          <li>Practice designing relationships (1:M, 1:1, and M:N) and implementing them through foreign keys and associative (bridge) tables.</li>
+        </ul>
+        <p class="mb-2 font-medium">Optimization Strategies:</p>
+        <ul class="list-disc ml-6 mb-4">
+          <li>
+            <strong>For Storage Efficiency:</strong>
+            <ul class="list-disc ml-6">
+              <li>Emphasize normalization to reduce redundancy and eliminate null values, safeguarding data integrity.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>For Access Speed:</strong>
+            <ul class="list-disc ml-6">
+              <li>Learn techniques such as denormalization (reintroducing controlled redundancy for faster read operations), clustering related data, and indexing to accelerate queries.</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="mb-2 font-medium">Practice Ideas:</p>
+        <ul class="list-disc ml-6">
+          <li>Estimate table sizes and growth rates based on given data specifications.</li>
+          <li>Develop sample queries and analyze the impact of normalization vs. denormalization on performance.</li>
+        </ul>
+      </div>
+    </main>
+
+    <script>
+      // Toggle sidebar on mobile devices
+      const hamburger = document.getElementById("hamburger");
+      const sidebar = document.getElementById("sidebar");
+
+      hamburger.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+      });
+    </script>
+  </body>
+</html>

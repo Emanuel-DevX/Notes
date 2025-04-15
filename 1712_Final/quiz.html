@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz System: 100 Questions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./quiz.js" defer></script>
+    <style>
+      /* Additional CSS if needed */
+    </style>
+  </head>
+  <body class="bg-gray-900 text-gray-100">
+    <div class="min-h-screen flex flex-col items-center justify-center p-4">
+      <h1 class="text-3xl font-bold mb-6">Quiz: 100 Questions</h1>
+      <div
+        id="quizContainer"
+        class="grid grid-cols-1 gap-6 w-full max-w-5xl"
+      ></div>
+      <!-- Check Answers button -->
+      <div class="mt-6">
+        <button
+          id="checkButton"
+          class="bg-green-500 px-4 py-2 rounded text-white font-semibold focus:outline-none"
+        >
+          Check Answers
+        </button>
+      </div>
+      <!-- Navigation buttons -->
+      <div class="mt-8 flex justify-center space-x-4">
+        <button
+          id="prevButton"
+          class="bg-blue-500 px-4 py-2 rounded text-white font-semibold focus:outline-none"
+        >
+          Previous
+        </button>
+        <button
+          id="nextButton"
+          class="bg-blue-500 px-4 py-2 rounded text-white font-semibold focus:outline-none"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+     </body>
+</html>
